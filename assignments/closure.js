@@ -1,8 +1,22 @@
-/*jshint esversion: 6 */ 
+/*jshint esversion: 6 */
 
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
-
+function a() {
+  const a1= "Steak Sauce";
+  console.log("I sure love steak covered with " + a1);
+  function b() {
+    const b4 = "Average Joe's";
+    console.log("I'm not sure if I have ever gone into that gym " + b4);
+    function c() {
+      const c4 = "me cry";
+      console.log("You're telling me you have never had " + a1 + "? " + b4 + " has no fouler attrocities to speak of! What's next? Are you going to make " + c4 + "?");
+    }
+    c();
+  }
+  b();
+}
+a();
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
