@@ -1,6 +1,8 @@
-/*jshint esversion: 6 */ 
+/*jshint esversion: 6 */
 
-// A local community center is holding a fund raising 5k fun run and has invited 50 small businesses to make a small donation on their behalf for some much needed updates to their facilities.  Each business has assigned a representative to attend the event along with a small donation.
+// A local community center is holding a fund raising 5k fun run and has invited 50
+ // small businesses to make a small donation on their behalf for some much needed updates to their facilities.
+ // Each business has assigned a representative to attend the event along with a small donation.
 
 // Scroll to the bottom of the list to use some advanced array methods to help the event director gather some information from the businesses.
 
@@ -56,30 +58,94 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 {"id":50,"first_name":"Shell","last_name":"Baine","email":"sbaine1d@intel.com","shirt_size":"M","company_name":"Gabtype","donation":171}];
 
 // ==== Challenge 1: Use .forEach() ====
-// The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName.
+// The event director needs both the first and last names of each runner for their running bibs.
+// Combine both the first and last names into a new array called fullName.
 let fullName = [];
+
+const forEach = (list, callBack) => {
+  for(let i=0; i<list.length; i++){
+    callBack(list[i]);
+  }
+};
+
+forEach(runners,function(x){
+  fullName.push(x.first_name + " " + x.last_name);
+});
+
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
-// The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
+// The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER.
+// Convert each first name into all caps and log the result
 let allCaps = [];
+
+const x = runners.map((i) => {
+return {"fist_name": i.first_name.toUpperCase()};
+});
+allCaps.push(x);
 console.log(allCaps);
 
 // ==== Challenge 3: Use .filter() ====
-// The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
+// The large shirts won't be available for the event due to an ordering issue.
+// Get a list of runners with large sized shirts so they can choose a different size.
+// Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+const y = runners.filter((i) => {
+  return i.shirt_size == "L";
+});
+largeShirts.push(y);
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
-// The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
+// The donations need to be tallied up and reported for tax purposes.
+// Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+const z = runners.reduce((i, add) =>
+  { return i += add.donation;}, 0);
+ticketPriceTotal.push(z);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
-// Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
+// Now that you have used .forEach(), .map(), .filter(), and .reduce().
+// I want you to think of potential problems you could solve given the data set and the 5k fun run theme.
+// Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1: The local community center wants to be able to attract more people for next year's
+// run, and it is vital to get as many participants as possible. They would like to keep a record of all of the
+// email addresses of all of last year's participants
 
-// Problem 2
+let findEmail = [];
 
-// Problem 3
+const forEach2 = (list, callBack) => {
+  for(let i=0; i<list.length; i++){
+    callBack(list[i]);
+  }
+};
+
+forEach2(runners,function(x){
+  findEmail.push(x.email);
+});
+
+console.log(findEmail);
+
+// Problem 2: the local community center also wants a diverse mix of companies that invest in next year's
+// fun run, and that means we do not want all donations coming from the same company, nor any companies
+// sounding similar to one another. To do this, they are asking to get the first letter of all of the
+// companies that donated this year.
+
+let companyNamesStartingWithG = [];
+const g = runners.map((i) => {
+return {"company_name": i.company_name.charAt(0)};
+});
+companyNamesStartingWithG.push(g);
+console.log(companyNamesStartingWithG);
+
+// Problem 3: the local community center also wants to make sure all contributions are
+// larger than $100, so they want to find out the current businesses that donated $100 or more
+
+let largeDonations = [];
+const findLG = runners.filter((i) => {
+  return i.donation >= 100;
+});
+largeDonations.push(findLG);
+console.log(largeDonations);
